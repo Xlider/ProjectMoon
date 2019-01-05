@@ -33,6 +33,7 @@ namespace Project_Moon
         public void InitializeComponents()
         {
             int i = 0;
+i=0;
             if (CurrentElement == Element.part || CurrentElement == Element.level)
             {
                 foreach (var d in Directory.GetDirectories(_path))
