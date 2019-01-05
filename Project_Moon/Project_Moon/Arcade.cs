@@ -33,20 +33,19 @@ namespace Project_Moon
         public void InitializeComponents()
         {
             int i = 0;
-i=0;
             if (CurrentElement == Element.part || CurrentElement == Element.level)
             {
-                foreach (var d in Directory.GetDirectories(_path))
+                foreach (string d in Directory.GetDirectories(_path))
                 {
-                    Names[i] = Path.GetDirectoryName(d);
+                    Names[i] = d.TrimEnd(Path.DirectorySeparatorChar).Split(Path.DirectorySeparatorChar).Last();
                     i++;
                 }
             }
             else if (CurrentElement == Element.problem)
             {
-                foreach (var d in Directory.GetDirectories(_path))
+                foreach (string d in Directory.GetFiles(_path))
                 {
-                    Names[i] = Path.GetDirectoryName(d);
+                    Names[i] = d.TrimEnd(Path.DirectorySeparatorChar).Split(Path.DirectorySeparatorChar).Last();
                     i++;
                 }
             }
@@ -75,7 +74,7 @@ i=0;
             }
             else
             {
-                return _path + Names[ind] + ".html";
+                return _path + "\\" + Names[ind];
             }
             return "NULL";
         }
@@ -85,13 +84,23 @@ i=0;
             if (CurrentElement == Element.problem)
             {
                 CurrentElement = Element.level;
+                RemoveLast_path();
                 this.InitializeComponents();
             }
             else if (CurrentElement == Element.level)
             {
                 CurrentElement = Element.part;
+                RemoveLast_path();
                 this.InitializeComponents();
             }
+        }
+        private void RemoveLast_path()
+        {
+            while (_path[_path.Length - 1] != '\\')
+            {
+                _path = _path.Remove(_path.Length - 1);
+            }
+            _path = _path.Remove(_path.Length - 1);
         }
 
     }

@@ -23,7 +23,7 @@ namespace Project_Moon
         FormSign FormSign;
         Profile CurrentProfile = new Profile();
         private Arcade _arcade;
-
+        Panel CurrentPanel;
         //ButtonZ _CloseButton = new ButtonZ();
         //ButtonZ _MinButton = new ButtonZ();
         //MinMaxButton _MaxButton = new MinMaxButton();
@@ -297,7 +297,9 @@ namespace Project_Moon
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            
+            CurrentPanel = MainPanel;
+            ChangeCurrentPanel(MainPanel);
+            //this.Controls.Add(CurrentPanel);
         }
 
         private void ButtonChangeProfile_Click(object sender, EventArgs e)
@@ -332,15 +334,84 @@ namespace Project_Moon
             HelpGroupBox.Location = new Point(RecentGroupBox.Location.X, 2 * _height + 45);
         }
 
-        private void ArcadeButton1_Click(object sender, EventArgs e)
-        {
-            _arcade.ButtonClicked(0);
-        }
 
         private void arcadeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             _arcade = new Arcade(ArcadeButton1, ArcadeButton2, ArcadeButton3, ArcadeButton4, ArcadeButton5);
             _arcade.InitializeComponents();
+            ChangeCurrentPanel(ArcadePanel);
+        }
+
+        private void ArcadeButton1_Click(object sender, EventArgs e)
+        {
+            string _s = _arcade.ButtonClicked(0);
+            if (_s != "NULL")
+            {
+                WebBrowser.Url = new Uri(_s);
+                ChangeCurrentPanel(ProblemPanel);
+            }
+        }
+
+        private void ArcadeButton2_Click(object sender, EventArgs e)
+        {
+            string _s = _arcade.ButtonClicked(1);
+            if (_s != "NULL")
+            {
+                WebBrowser.Url = new Uri(_s);
+                ChangeCurrentPanel(ProblemPanel);
+            }
+        }
+
+        private void ArcadeButton3_Click(object sender, EventArgs e)
+        {
+            string _s = _arcade.ButtonClicked(2);
+            if (_s != "NULL")
+            {
+                WebBrowser.Url = new Uri(_s);
+                ChangeCurrentPanel(ProblemPanel);
+            }
+        }
+
+        private void ArcadeButton4_Click(object sender, EventArgs e)
+        {
+            string _s = _arcade.ButtonClicked(3);
+            if (_s != "NULL")
+            {
+                WebBrowser.Url = new Uri(_s);
+                ChangeCurrentPanel(ProblemPanel);
+            }
+        }
+
+        private void ArcadeButton5_Click(object sender, EventArgs e)
+        {
+            string _s = _arcade.ButtonClicked(4);
+            if (_s != "NULL")
+            {
+                WebBrowser.Url = new Uri(_s);
+                ChangeCurrentPanel(ProblemPanel);
+            }
+        }
+
+        private void GoBackButton_Click(object sender, EventArgs e)
+        {
+            _arcade.GoBack();
+        }
+
+        private void ChangeCurrentPanel(Panel _p)
+        {
+            CurrentPanel.Location = new Point(10000, 10000);
+            CurrentPanel = _p;
+            CurrentPanel.Location = new Point(45, 76);
+        }
+
+        private void mainToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ChangeCurrentPanel(MainPanel);
+        }
+
+        private void GoBackButton2_Click(object sender, EventArgs e)
+        {
+            ChangeCurrentPanel(ArcadePanel); 
         }
     }
 }

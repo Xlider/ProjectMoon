@@ -60,11 +60,15 @@
             this.StartGroupBox = new System.Windows.Forms.GroupBox();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.ArcadePanel = new System.Windows.Forms.Panel();
+            this.GoBackButton = new System.Windows.Forms.Button();
+            this.ArcadeButton5 = new System.Windows.Forms.Button();
             this.ArcadeButton4 = new System.Windows.Forms.Button();
             this.ArcadeButton3 = new System.Windows.Forms.Button();
             this.ArcadeButton2 = new System.Windows.Forms.Button();
             this.ArcadeButton1 = new System.Windows.Forms.Button();
-            this.ArcadeButton5 = new System.Windows.Forms.Button();
+            this.ProblemPanel = new System.Windows.Forms.Panel();
+            this.WebBrowser = new System.Windows.Forms.WebBrowser();
+            this.GoBackButton2 = new System.Windows.Forms.Button();
             this._MaxButton = new CustomWindowsForm.MinMaxButton();
             this._MinButton = new CustomWindowsForm.ButtonZ();
             this._CloseButton = new CustomWindowsForm.ButtonZ();
@@ -76,6 +80,7 @@
             this.NewsGroupBox.SuspendLayout();
             this.StartGroupBox.SuspendLayout();
             this.ArcadePanel.SuspendLayout();
+            this.ProblemPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // TopBorderPanel
@@ -180,6 +185,7 @@
             this.mainToolStripMenuItem.Name = "mainToolStripMenuItem";
             this.mainToolStripMenuItem.Size = new System.Drawing.Size(54, 22);
             this.mainToolStripMenuItem.Text = "Main";
+            this.mainToolStripMenuItem.Click += new System.EventHandler(this.mainToolStripMenuItem_Click);
             // 
             // learnToolStripMenuItem
             // 
@@ -382,16 +388,46 @@
             this.ArcadePanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
+            this.ArcadePanel.Controls.Add(this.GoBackButton);
             this.ArcadePanel.Controls.Add(this.ArcadeButton5);
             this.ArcadePanel.Controls.Add(this.ArcadeButton4);
             this.ArcadePanel.Controls.Add(this.ArcadeButton3);
             this.ArcadePanel.Controls.Add(this.ArcadeButton2);
             this.ArcadePanel.Controls.Add(this.ArcadeButton1);
-            this.ArcadePanel.Location = new System.Drawing.Point(46, 76);
+            this.ArcadePanel.Location = new System.Drawing.Point(10000, 10000);
             this.ArcadePanel.MinimumSize = new System.Drawing.Size(630, 360);
             this.ArcadePanel.Name = "ArcadePanel";
             this.ArcadePanel.Size = new System.Drawing.Size(630, 360);
             this.ArcadePanel.TabIndex = 9;
+            // 
+            // GoBackButton
+            // 
+            this.GoBackButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.GoBackButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.GoBackButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.GoBackButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.25F);
+            this.GoBackButton.Location = new System.Drawing.Point(42, 11);
+            this.GoBackButton.Name = "GoBackButton";
+            this.GoBackButton.Size = new System.Drawing.Size(23, 38);
+            this.GoBackButton.TabIndex = 5;
+            this.GoBackButton.Text = "<";
+            this.GoBackButton.UseVisualStyleBackColor = true;
+            this.GoBackButton.Click += new System.EventHandler(this.GoBackButton_Click);
+            // 
+            // ArcadeButton5
+            // 
+            this.ArcadeButton5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.ArcadeButton5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.ArcadeButton5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ArcadeButton5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.25F);
+            this.ArcadeButton5.Location = new System.Drawing.Point(42, 291);
+            this.ArcadeButton5.Name = "ArcadeButton5";
+            this.ArcadeButton5.Size = new System.Drawing.Size(541, 58);
+            this.ArcadeButton5.TabIndex = 4;
+            this.ArcadeButton5.UseVisualStyleBackColor = true;
+            this.ArcadeButton5.Click += new System.EventHandler(this.ArcadeButton5_Click);
             // 
             // ArcadeButton4
             // 
@@ -405,6 +441,7 @@
             this.ArcadeButton4.Size = new System.Drawing.Size(541, 58);
             this.ArcadeButton4.TabIndex = 3;
             this.ArcadeButton4.UseVisualStyleBackColor = true;
+            this.ArcadeButton4.Click += new System.EventHandler(this.ArcadeButton4_Click);
             // 
             // ArcadeButton3
             // 
@@ -418,6 +455,7 @@
             this.ArcadeButton3.Size = new System.Drawing.Size(541, 58);
             this.ArcadeButton3.TabIndex = 2;
             this.ArcadeButton3.UseVisualStyleBackColor = true;
+            this.ArcadeButton3.Click += new System.EventHandler(this.ArcadeButton3_Click);
             // 
             // ArcadeButton2
             // 
@@ -431,6 +469,7 @@
             this.ArcadeButton2.Size = new System.Drawing.Size(541, 58);
             this.ArcadeButton2.TabIndex = 1;
             this.ArcadeButton2.UseVisualStyleBackColor = true;
+            this.ArcadeButton2.Click += new System.EventHandler(this.ArcadeButton2_Click);
             // 
             // ArcadeButton1
             // 
@@ -446,18 +485,39 @@
             this.ArcadeButton1.UseVisualStyleBackColor = true;
             this.ArcadeButton1.Click += new System.EventHandler(this.ArcadeButton1_Click);
             // 
-            // ArcadeButton5
+            // ProblemPanel
             // 
-            this.ArcadeButton5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.ProblemPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.ArcadeButton5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ArcadeButton5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ArcadeButton5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.25F);
-            this.ArcadeButton5.Location = new System.Drawing.Point(42, 291);
-            this.ArcadeButton5.Name = "ArcadeButton5";
-            this.ArcadeButton5.Size = new System.Drawing.Size(541, 58);
-            this.ArcadeButton5.TabIndex = 4;
-            this.ArcadeButton5.UseVisualStyleBackColor = true;
+            this.ProblemPanel.Controls.Add(this.WebBrowser);
+            this.ProblemPanel.Controls.Add(this.GoBackButton2);
+            this.ProblemPanel.Location = new System.Drawing.Point(10000, 10000);
+            this.ProblemPanel.MinimumSize = new System.Drawing.Size(630, 360);
+            this.ProblemPanel.Name = "ProblemPanel";
+            this.ProblemPanel.Size = new System.Drawing.Size(630, 360);
+            this.ProblemPanel.TabIndex = 10;
+            // 
+            // WebBrowser
+            // 
+            this.WebBrowser.Location = new System.Drawing.Point(42, 56);
+            this.WebBrowser.MinimumSize = new System.Drawing.Size(20, 20);
+            this.WebBrowser.Name = "WebBrowser";
+            this.WebBrowser.Size = new System.Drawing.Size(585, 272);
+            this.WebBrowser.TabIndex = 6;
+            // 
+            // GoBackButton2
+            // 
+            this.GoBackButton2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.GoBackButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.GoBackButton2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.25F);
+            this.GoBackButton2.Location = new System.Drawing.Point(42, 11);
+            this.GoBackButton2.Name = "GoBackButton2";
+            this.GoBackButton2.Size = new System.Drawing.Size(23, 38);
+            this.GoBackButton2.TabIndex = 5;
+            this.GoBackButton2.Text = "<";
+            this.GoBackButton2.UseVisualStyleBackColor = true;
+            this.GoBackButton2.Click += new System.EventHandler(this.GoBackButton2_Click);
             // 
             // _MaxButton
             // 
@@ -529,6 +589,7 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(60)))), ((int)(((byte)(150)))));
             this.ClientSize = new System.Drawing.Size(684, 461);
             this.ControlBox = false;
+            this.Controls.Add(this.ProblemPanel);
             this.Controls.Add(this.ArcadePanel);
             this.Controls.Add(this.MainPanel);
             this.Controls.Add(this.PanelProfile);
@@ -557,6 +618,7 @@
             this.StartGroupBox.ResumeLayout(false);
             this.StartGroupBox.PerformLayout();
             this.ArcadePanel.ResumeLayout(false);
+            this.ProblemPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -601,6 +663,10 @@
         private System.Windows.Forms.Button ArcadeButton4;
         private System.Windows.Forms.Button ArcadeButton3;
         private System.Windows.Forms.Button ArcadeButton5;
+        private System.Windows.Forms.Button GoBackButton;
+        private System.Windows.Forms.Panel ProblemPanel;
+        private System.Windows.Forms.WebBrowser WebBrowser;
+        private System.Windows.Forms.Button GoBackButton2;
     }
 }
 
